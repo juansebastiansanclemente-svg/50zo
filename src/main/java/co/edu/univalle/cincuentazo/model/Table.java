@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
+    private static final int MAX_SUM = 50;
     private final List<Card> playedCards = new ArrayList<>();
     private int sum;
 
@@ -14,6 +15,10 @@ public class Table {
 
     public int getSum() {
         return sum;
+    }
+
+    public boolean canPlay(int value) {
+        return sum + value <= MAX_SUM;
     }
 
     public Card getTopCard() {

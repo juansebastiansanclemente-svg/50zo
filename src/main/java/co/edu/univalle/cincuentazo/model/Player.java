@@ -35,4 +35,14 @@ public abstract class Player {
         hand.clear();
         return returned;
     }
+    public boolean hasPlayableCard(Table table) {
+        for (Card card : hand) {
+            for (int value : card.getPossibleValues()) {
+                if (table.canPlay(value)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
