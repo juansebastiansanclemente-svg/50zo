@@ -29,7 +29,7 @@ public abstract class Player {
         hand.remove(card);
     }
 
-    public List<Card> eliminated() {
+    public List<Card> eliminate() {
         eliminated = true;
         List<Card> returned = new ArrayList<>(hand);
         hand.clear();
@@ -45,4 +45,16 @@ public abstract class Player {
         }
         return false;
     }
+
+    public List<Move> getPlayableMoves(Table table) {
+        List<Move> moves = new ArrayList<>();
+        for (Card card : hand) {
+            for(int value : card.getPossibleValues()) {
+                if (table.canPlay(value)) {
+                    moves.add(new Move(card, value));
+            }
+        }
+    }
+    return moves;
+}
 }
